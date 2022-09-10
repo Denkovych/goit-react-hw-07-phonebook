@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux/es/exports';
 export default function ContactList() {
   const { data: contacts } = useGetContactsQuery();
   const filter = useSelector(selectFilter);
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase()));
+  console.log(filter)
+  const visibleContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   
     return (
     <ul className={s.contactList}>
