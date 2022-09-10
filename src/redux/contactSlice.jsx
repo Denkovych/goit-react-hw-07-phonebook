@@ -1,8 +1,4 @@
-import {
-    createReducer,
-    createAction,
-    
-  } from '@reduxjs/toolkit';
+import {createReducer,createAction} from '@reduxjs/toolkit';
   import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
   
   
@@ -42,7 +38,7 @@ import {
   });
   
   export const selectFilter = state => state.filter;
-  
+  console.log()
   export const {
     useGetContactsQuery,
     useDeleteContactMutation,
