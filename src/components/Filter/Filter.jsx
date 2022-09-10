@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 export default function Filter() {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-
+console.log(filter)
   const inputId = nanoid();
   return (
     <>
