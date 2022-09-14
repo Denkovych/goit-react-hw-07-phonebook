@@ -5,40 +5,41 @@ import {createReducer,createAction} from '@reduxjs/toolkit';
   export const setFilter = createAction('contacts/setFilter');
   
   export const contactsApi = createApi({
-    reducerPath: 'contactsApi',
-    tagTypes: ['Contacts'],
-    baseQuery: fetchBaseQuery({
-      baseUrl: 'https://631c6eb94fa7d3264cadf978.mockapi.io/api/phonebook/',
+  reducerPath: 'contactsApi',
+  tagTypes: ['Contacts'],
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/',
+  }),
+  endpoints: (builder) => ({
+    getContacts: builder.query({
+      query: () => `contacts`,
+      providesTags: ['Contacts'],
     }),
-    endpoints: builder => ({
-      getContacts: builder.query({
-        query: () => `contacts`,
-        providesTags: ['Contacts'],
+    addContact: builder.mutation({
+      query: newContact => ({
+        url: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/contacts`,
+        method: 'POST',
+        body: newContact,
       }),
-      addContact: builder.mutation({
-        query: newContact => ({
-          url: `contacts`,
-          method: 'POST',
-          body: newContact,
-        }),
-        invalidatesTags: ['Contacts'],
-      }),
-      deleteContact: builder.mutation({
-        query: id => ({
-          url: `contacts/${id}`,
-          method: 'DELETE',
-        }),
-        invalidatesTags: ['Contacts'],
-      }),
+      invalidatesTags: ['Contacts'],
     }),
-  });
+    deleteContact: builder.mutation({
+      query: id => ({
+        url: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/contacts/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+  }),
+});
+  
   
   export const filterReducer = createReducer('', {
     [setFilter]: (_, action) => action.payload,
   });
   
   export const selectFilter = state => state.filter;
-  console.log()
+  console.log(selectFilter)
   export const {
     useGetContactsQuery,
     useDeleteContactMutation,
