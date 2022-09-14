@@ -6,18 +6,25 @@ import {createReducer,createAction} from '@reduxjs/toolkit';
   
   export const contactsApi = createApi({
   reducerPath: 'contactsApi',
-  tagTypes: ['Contacts'],
+  
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/',
+    baseUrl: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/`,
+    
   }),
-  endpoints: (builder) => ({
+  tagTypes: ['Contacts'],
+
+  endpoints: builder => ({
     getContacts: builder.query({
       query: () => `contacts`,
       providesTags: ['Contacts'],
     }),
+    getContactById: builder.query({
+      query: id => `contacts/${id}`,
+      providesTags: ['Contacts'],
+    }),
     addContact: builder.mutation({
       query: newContact => ({
-        url: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/contacts`,
+        url: `contacts`,
         method: 'POST',
         body: newContact,
       }),
@@ -25,8 +32,9 @@ import {createReducer,createAction} from '@reduxjs/toolkit';
     }),
     deleteContact: builder.mutation({
       query: id => ({
-        url: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/contacts/${id}`,
+        url: `contacts/${id}`,
         method: 'DELETE',
+        body: id,
       }),
       invalidatesTags: ['Contacts'],
     }),
