@@ -8,7 +8,7 @@ import {createReducer,createAction} from '@reduxjs/toolkit';
   reducerPath: 'contactsApi',
   
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/`,
+    baseUrl: `https://62f4edbc535c0c50e765afc2.mockapi.io/api/phonebook/:`,
     
   }),
   tagTypes: ['Contacts'],
@@ -47,7 +47,7 @@ import {createReducer,createAction} from '@reduxjs/toolkit';
   });
   
   export const selectFilter = state => state.filter;
-  console.log(selectFilter)
+  console.log(setFilter)
   export const {
     useGetContactsQuery,
     useDeleteContactMutation,
