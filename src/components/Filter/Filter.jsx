@@ -1,28 +1,19 @@
-import { nanoid } from 'nanoid';
-import s from './Filter.module.css';
-import { DebounceInput } from 'react-debounce-input';
+import PropTypes from 'prop-types';
+import { FilterWrapper, Input, Title } from './Filter.styled';
 
-import { setFilter, selectFilter } from 'redux/contactSlice';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
-
-export default function Filter() {
-  const filter = useSelector(selectFilter);
-  const dispatch = useDispatch();
-console.log(filter)
-  const inputId = nanoid();
+const Filter = ({ onSearch, value }) => {
   return (
-    <>
-      <label htmlFor={inputId} className={s.label}>
-        Find contacts by name
-      </label>
-      <DebounceInput
-        type="text"
-        name="filter"
-        value={filter}
-        debounceTimeout={300}
-        onChange={event => dispatch(setFilter(event.target.value))}
-        className={s.input}
-      />
-    </>
+    <FilterWrapper>
+      <Title>Filter</Title>
+
+      <Input onChange={onSearch} value={value} type="text" name="filter" />
+    </FilterWrapper>
   );
-}
+};
+
+export default Filter;
+
+Filter.propTypes = {
+  onSearch: PropTypes.func,
+  value: PropTypes.string,
+};

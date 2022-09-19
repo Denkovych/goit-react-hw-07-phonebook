@@ -1,19 +1,27 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
+import {
+  AddContactsForm,
+  Container,
+  NavBar,
+  ContactsList,
+  Filter,
+} from 'components';
+import { useFilteredContacts } from 'hooks/useFilteredContacts';
+import { useToggle } from 'hooks/useToggle';
 
-import s from './App.module.css';
+export const App = () => {
+  const [filteredContacts, filter, setFilter] = useFilteredContacts();
+  const { isOpenFilter, isOpenAddForm, isOpenUpdateForm } = useToggle();
 
-function App() {
   return (
-    <div className={s.container}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
-  );
-}
+    <Container>
+      <NavBar />
+      {isOpenAddForm && <AddContactsForm type={'add'} />}
+      {isOpenUpdateForm && <AddContactsForm type={'update'} />}
+      {isOpenFilter && (
+        <Filter value={filter} onSearch={e => setFilter(e.target.value)} />
+      )}
 
-export { App };
+      <ContactsList contacts={filteredContacts} />
+    </Container>
+  );
+};
