@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 20px;
-  background-color: #4287f5;
+  background-color: green;
 `;
 
 export const Title = styled.div`
