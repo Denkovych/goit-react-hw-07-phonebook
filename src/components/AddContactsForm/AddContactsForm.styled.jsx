@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik';
 export const FormWrapper = styled.div`
   padding: 20px 40px;
   background-color: #e6f3fa;
-  border-bottom: 2px solid #4287f5;
+  border-bottom: 2px solid green;
   text-align: center;
 `;
 
@@ -25,9 +25,7 @@ export const Label = styled.label`
   :not(:last-child) {
     margin-bottom: 20px;
   }
-  /* align-items: flex-start;
-  margin: 0 auto;
-  width: 300px; */
+  
 `;
 
 export const Input = styled(Field)`
@@ -37,7 +35,7 @@ export const Input = styled(Field)`
   border-radius: 5px;
   outline: none;
   :focus {
-    border-color: #4287f5;
+    border-color:green;
   }
 `;
 
@@ -48,10 +46,10 @@ export const Button = styled.button`
   border: none;
   border-radius: 5px;
   border: 1px solid #fff;
-  background-color: #4287f5;
-  color: #4287f5;
+  background-color: green;
+  color: green;
   background-color: transparent;
-  border: 1px solid #4287f5;
+  border: 1px solid green;
   transition: all 100ms linear;
   cursor: pointer;
   :not(:last-child) {
@@ -60,7 +58,7 @@ export const Button = styled.button`
   :hover {
     color: #fff;
     border-color: #fff;
-    background-color: #4287f5;
+    background-color: green;
   }
 `;
 
