@@ -22,10 +22,10 @@ export const Contact = styled.p`
 
 export const IconUser = styled(RiUserFill)`
   padding: 3px;
-  border: 1px solid #4287f5;
+  border: 1px solid green;
   border-radius: 50%;
   margin-right: 10px;
-  color: #4287f5;
+  color: green;
 `;
 
 export const Button = styled.button`
@@ -49,6 +49,6 @@ export const Button = styled.button`
 
 export const ButtonEdit = styled(Button)`
   :hover {
-    color: #4287f5;
+    color: green;
   }
 `;
